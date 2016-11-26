@@ -33,7 +33,7 @@ def main(paths):
       out = subprocess.check_output('identify -verbose "' + path + '"', stderr=subprocess.STDOUT, shell=True)
       sys.stdout.write('identify,succeeded,' + path + ',' + out.replace('\n', '\\n') + '\n')
     except subprocess.CalledProcessError as e:
-      sys.stdout.write('identify,failed,' + path + ',', + e.output.replace('\n', '\\n') + '\n')
+      sys.stdout.write('identify,failed,' + path + ',' + e.output.replace('\n', '\\n') + '\n')
 
 
 
