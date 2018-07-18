@@ -21,19 +21,19 @@ def main(paths):
       im.load()
       sys.stdout.write('PIL,succeeded,' + path + ',\n')
     except Exception as e:
-      sys.stdout.write('PIL,failed,' + path + str(e).replace('\n', '\\n') + '\n')
+      sys.stdout.write('PIL,failed,' + path + ',' + str(e).replace('\n', '\\n') + '\n')
 
-    try:
-      out = subprocess.check_output('jpeginfo -c "' + path + '"', stderr=subprocess.STDOUT, shell=True)
-      sys.stdout.write('jpeginfo,succeeded,' + path + ',' + out.replace('\n', '\\n') + '\n')
-    except subprocess.CalledProcessError as e:
-      sys.stdout.write('jpeginfo,failed,' + path + ',' + e.output.replace('\n', '\\n') + '\n')
+    #try:
+    #  out = subprocess.check_output('jpeginfo -c "' + path + '"', stderr=subprocess.STDOUT, shell=True)
+    #  sys.stdout.write('jpeginfo,succeeded,' + path + ',' + out.replace('\n', '\\n') + '\n')
+    #except subprocess.CalledProcessError as e:
+    #  sys.stdout.write('jpeginfo,failed,' + path + ',' + e.output.replace('\n', '\\n') + '\n')
 
-    try:
-      out = subprocess.check_output('identify -verbose "' + path + '"', stderr=subprocess.STDOUT, shell=True)
-      sys.stdout.write('identify,succeeded,' + path + ',' + out.replace('\n', '\\n') + '\n')
-    except subprocess.CalledProcessError as e:
-      sys.stdout.write('identify,failed,' + path + ',' + e.output.replace('\n', '\\n') + '\n')
+    #try:
+    #  out = subprocess.check_output('identify -verbose "' + path + '"', stderr=subprocess.STDOUT, shell=True)
+    #  sys.stdout.write('identify,succeeded,' + path + ',' + out.replace('\n', '\\n') + '\n')
+    #except subprocess.CalledProcessError as e:
+    #  sys.stdout.write('identify,failed,' + path + ',' + e.output.replace('\n', '\\n') + '\n')
 
 
 
