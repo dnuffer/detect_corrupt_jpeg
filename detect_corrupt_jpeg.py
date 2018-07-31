@@ -1,16 +1,16 @@
+# pip install Pillow
 from PIL import Image
 import sys
 import subprocess
+# pip install python-magic
 import magic
 
 def main(paths):
-  m=magic.open(magic.MAGIC_MIME)
-  m.load()
-
   for path in paths:
-    mime_type = m.file(path)
+    mime_type = magic.from_file(path, mime=True)
     if mime_type.startswith('image/jpeg'):
-      sys.stdout.write('magic,succeeded,' + path + ',' + mime_type + '\n')
+      pass
+      #sys.stdout.write('magic,succeeded,' + path + ',' + mime_type + '\n')
     else:
       sys.stdout.write('magic,failed,' + path + ',' + mime_type + '\n')
 
@@ -19,7 +19,7 @@ def main(paths):
       im.verify()
       im = Image.open(path)
       im.load()
-      sys.stdout.write('PIL,succeeded,' + path + ',\n')
+      #sys.stdout.write('PIL,succeeded,' + path + ',\n')
     except Exception as e:
       sys.stdout.write('PIL,failed,' + path + ',' + str(e).replace('\n', '\\n') + '\n')
 
